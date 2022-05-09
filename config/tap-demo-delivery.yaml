@@ -1,0 +1,28 @@
+apiVersion: carto.run/v1alpha1
+kind: Deliverable
+metadata:
+  creationTimestamp: "2022-05-09T03:33:34Z"
+  generation: 1
+  labels:
+    app.kubernetes.io/component: deliverable
+    app.kubernetes.io/part-of: tap-demo
+    app.tanzu.vmware.com/deliverable-type: web
+    apps.tanzu.vmware.com/has-tests: "true"
+    apps.tanzu.vmware.com/workload-type: web
+    carto.run/cluster-template-name: deliverable-template
+    carto.run/resource-name: deliverable
+    carto.run/supply-chain-name: source-test-scan-to-url
+    carto.run/template-kind: ClusterTemplate
+    carto.run/workload-name: tap-demo
+    carto.run/workload-namespace: tap-demo
+  name: tap-demo
+  namespace: tap-demo
+spec:
+  params:
+    - name: gitops_ssh_secret
+      value: git-ssh
+  source:
+    git:
+      ref:
+        branch: main
+      url: ssh://git@github.com/dbha/tap-demo-config.git
